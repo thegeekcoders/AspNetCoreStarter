@@ -1,0 +1,10 @@
+C:\Users\Chetan\Documents\GitHub\AspNetCoreStarter\bin\Debug\netcoreapp2.0\AspNetCoreStarter.deps.json
+C:\Users\Chetan\Documents\GitHub\AspNetCoreStarter\bin\Debug\netcoreapp2.0\AspNetCoreStarter.runtimeconfig.json
+C:\Users\Chetan\Documents\GitHub\AspNetCoreStarter\bin\Debug\netcoreapp2.0\AspNetCoreStarter.runtimeconfig.dev.json
+C:\Users\Chetan\Documents\GitHub\AspNetCoreStarter\bin\Debug\netcoreapp2.0\AspNetCoreStarter.dll
+C:\Users\Chetan\Documents\GitHub\AspNetCoreStarter\bin\Debug\netcoreapp2.0\AspNetCoreStarter.pdb
+C:\Users\Chetan\Documents\GitHub\AspNetCoreStarter\obj\Debug\netcoreapp2.0\AspNetCoreStarter.csproj.CoreCompileInputs.cache
+C:\Users\Chetan\Documents\GitHub\AspNetCoreStarter\obj\Debug\netcoreapp2.0\AspNetCoreStarter.AssemblyInfoInputs.cache
+C:\Users\Chetan\Documents\GitHub\AspNetCoreStarter\obj\Debug\netcoreapp2.0\AspNetCoreStarter.AssemblyInfo.cs
+C:\Users\Chetan\Documents\GitHub\AspNetCoreStarter\obj\Debug\netcoreapp2.0\AspNetCoreStarter.dll
+C:\Users\Chetan\Documents\GitHub\AspNetCoreStarter\obj\Debug\netcoreapp2.0\AspNetCoreStarter.pdb
