@@ -1,0 +1,45 @@
+@model IEnumerable<AspNetCoreStarter.Models.Student>
+@{
+    ViewBag.Title = "Students";
+}
+
+<h2>List of Students</h2>
+<hr/>
+
+<div class="pull-right">
+    <p>
+    <a href="@Url.Action("Create")" class="btn btn-primary btn-sm">Add a Student</a>
+    </p>
+</div>
+
+<table class="table table-hover table-striped table-responsive table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+             <th>FirstName</th>
+             <th>LastName</th>
+             <th>Email</th>
+             <th>Status</th>
+             <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+       
+            @foreach(var student in Model)
+            {
+                 <tr>
+                <td>@student.Id</td>
+                <td>@student.FirstName</td>
+                 <td>@student.LastName</td>
+                  <td>@student.Email</td>
+                  <td>@student.Status</td>
+                  <td>
+                      <a href="@Url.Action("Edit","Students",new {id = student.Id})" class="btn btn-sm btn-info">Edit</a>
+                      <a href="@Url.Action("Edit","Students",new {id = student.Id})" class="btn btn-sm btn-danger">Delete</a>
+                      </td>
+                  </tr>
+            }
+        
+    </tbody>
+</table>
