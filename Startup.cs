@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNetCoreStarter.Models;
+using AspNetCoreStarter.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
@@ -29,6 +32,9 @@ namespace AspNetCoreStarter
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddScoped<IStudentData,InMemoryStudentData>();
+            services.AddDbContext<AppDbContext>(options =>
+             options.UseSqlServer(Configuration.GetConnectionString("SampleApp")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
