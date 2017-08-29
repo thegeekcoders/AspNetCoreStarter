@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using AspNetCoreStarter.Models;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace AspNetCoreStarter.Services
 {
@@ -10,6 +11,9 @@ namespace AspNetCoreStarter.Services
         Student GetById(int id);
         Student Add(Student s);
         void Edit(Student s);
+        void Delete(Student s);
+
+        void Commit();
     }
     public class InMemoryStudentData : IStudentData
     {
@@ -21,10 +25,10 @@ namespace AspNetCoreStarter.Services
                  new Student { Id = 2, FirstName = "Lokesh",LastName = "Banskota", Email = "lokesh@gmail.com",Status=false}
             };
         }
-       
+
         public Student Add(Student newStudent)
         {
-        newStudent.Id = _students.Max(s => s.Id) + 1;
+            newStudent.Id = _students.Max(s => s.Id) + 1;
             _students.Add(newStudent);
             return newStudent;
 
@@ -37,6 +41,7 @@ namespace AspNetCoreStarter.Services
             student.LastName = s.LastName;
             student.Email = s.Email;
             student.Status = s.Status;
+
         }
 
         public IEnumerable<Student> GetAll()
@@ -49,6 +54,59 @@ namespace AspNetCoreStarter.Services
             return _students.FirstOrDefault(s => s.Id == id);
         }
 
-          static List<Student> _students;
+        public void Commit()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Delete(Student s)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        static List<Student> _students;
+    }
+
+    public class SqlStudentData : IStudentData
+    {
+        private AppDbContext _db;
+        public SqlStudentData(AppDbContext db)
+        {
+            _db = db;
+        }
+        public Student Add(Student s)
+        {
+            _db.Students.Add(s);
+            Commit();
+            return s;
+        }
+
+        public void Commit()
+        {
+            _db.SaveChanges();
+        }
+
+        public void Edit(Student s)
+        {
+            _db.Entry(s).State = EntityState.Modified;
+            Commit();
+        }
+
+        public void Delete(Student s)
+        {
+            _db.Remove(s);
+            Commit();
+        }
+
+        public IEnumerable<Student> GetAll()
+        {
+            return _db.Students;
+        }
+
+        public Student GetById(int id)
+        {
+            var student = _db.Students.FirstOrDefault(s => s.Id == id);
+            return (student != null) ? student : null;
+        }
     }
 }

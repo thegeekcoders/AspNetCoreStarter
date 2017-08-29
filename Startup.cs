@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 
+
 namespace AspNetCoreStarter
 {
     public class Startup
@@ -32,7 +33,7 @@ namespace AspNetCoreStarter
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddScoped<IStudentData,InMemoryStudentData>();
+            services.AddScoped<IStudentData,SqlStudentData>();
             services.AddDbContext<AppDbContext>(options =>
              options.UseSqlServer(Configuration.GetConnectionString("SampleApp")));
         }
@@ -60,7 +61,11 @@ namespace AspNetCoreStarter
                    RequestPath = new PathString("/bower")
             });
 
-            app.UseMvcWithDefaultRoute();
+            app.UseMvc(cofig => {
+            cofig.MapRoute("Default",
+            template:"{controller=students}/{action=index}/{id?}");
+            });
+
 
             app.Run(async (context) =>
             {

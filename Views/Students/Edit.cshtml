@@ -1,0 +1,29 @@
+
+@model StudentEditViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<form method="post" asp-controller="Students" asp-action="Edit">
+    <div class="form-group">
+        <label asp-for="FirstName"></label>
+        <input type="text" class="form-control" asp-for="FirstName" />
+        <span asp-validation-for="FirstName"></span>
+    </div>
+     <div class="form-group">
+       <label asp-for="LastName"></label>
+        <input type="text" class="form-control" asp-for="LastName" />
+        <span asp-validation-for="LastName"></span>
+    </div>
+     <div class="form-group">
+      <label asp-for="Email"></label>
+        <input type="text" class="form-control" asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+     <div class="checkbox">
+  <label><input type="checkbox" asp-for="Status" /></label>
+    </div>
+
+    <button type="submit" class="btn btn-success">Update</button>
+</form>
